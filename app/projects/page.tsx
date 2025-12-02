@@ -16,12 +16,11 @@ export default function Projects() {
 
   const getViewUrl = (url: string, projectName: string) => {
     if (url.endsWith('.pptx')) {
-      // Create slug from project name for viewer page
-      const slug = projectName
-        .toLowerCase()
-        .replace(/[^a-z0-9]+/g, '-')
-        .replace(/^-+|-+$/g, '');
-      return `/view-project/${slug}`;
+      // Open PowerPoint directly in Office Online viewer
+      if (baseUrl) {
+        return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(baseUrl + url)}`;
+      }
+      return url;
     }
     if (url.endsWith('.pdf')) {
       // Use API route for PDF files
@@ -317,12 +316,12 @@ export default function Projects() {
                   {project.pdfUrl && (
                     <a
                       href={getViewUrl(project.pdfUrl, project.name)}
-                      target={project.pdfUrl.endsWith('.pptx') ? undefined : '_blank'}
-                      rel={project.pdfUrl.endsWith('.pptx') ? undefined : 'noopener noreferrer'}
+                      target="_blank"
+                      rel="noopener noreferrer"
                       className="flex-1 btn-primary text-center text-sm py-2 flex items-center justify-center gap-2"
                     >
                       <ExternalLink className="w-4 h-4" />
-                      {project.pdfUrl.endsWith('.pdf') ? 'View PDF' : project.pdfUrl.endsWith('.pptx') ? 'View Dashboards' : 'View Project'}
+                      {project.pdfUrl.endsWith('.pdf') ? 'View PDF' : project.pdfUrl.endsWith('.pptx') ? 'View Dashboard' : 'View Project'}
                     </a>
                   )}
                   {project.notebookUrl && (
