@@ -1,7 +1,7 @@
 import { NextRequest, NextResponse } from 'next/server';
 import { Resend } from 'resend';
 
-const resend = new Resend(process.env.RESEND_API_KEY);
+const resend = process.env.RESEND_API_KEY ? new Resend(process.env.RESEND_API_KEY) : null;
 
 export async function POST(request: NextRequest) {
   try {
@@ -15,7 +15,16 @@ export async function POST(request: NextRequest) {
       );
     }
 
-    // Send email using Resend
+    // Send email using Resend (if API key is configured)
+    if (!resend) {
+      // If Resend is not configured, just log the contact and return success
+      console.log('Contact form submission (Resend not configured):', { name, email, subject, message });
+      return NextResponse.json(
+        { message: 'Message received successfully (email service not configured)' },
+        { status: 200 }
+      );
+    }
+
     const { data, error } = await resend.emails.send({
       from: 'Portfolio Contact <onboarding@resend.dev>', // Update with your domain
       to: ['omolarabuhari1@gmail.com'],
