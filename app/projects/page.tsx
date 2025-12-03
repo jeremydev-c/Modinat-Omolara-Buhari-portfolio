@@ -70,10 +70,11 @@ export default function Projects() {
     },
     {
       name: "Analysis of Choco De Luxe Sales Data",
-      tagline: "Sales Analytics Dashboard - Power BI",
-      description: "Comprehensive sales data analysis for Choco De Luxe featuring 16 slides with 12 detailed visualizations. Includes sales trends, product performance, regional analysis, and actionable business insights for strategic decision-making.",
-      tech: ["Power BI", "Excel", "Data Analysis", "Sales Analytics"],
+      tagline: "Sales Analytics Dashboard - Tableau",
+      description: "Comprehensive sales data analysis for Choco De Luxe using Tableau dashboards featuring 16 slides with 12 detailed visualizations. Includes sales trends, product performance, regional analysis, and actionable business insights for strategic decision-making.",
+      tech: ["Tableau", "Data Analysis", "Sales Analytics"],
       features: [
+        "Tableau Dashboard Creation",
         "Sales Trend Analysis",
         "Product Performance Metrics",
         "Regional Sales Breakdown",
