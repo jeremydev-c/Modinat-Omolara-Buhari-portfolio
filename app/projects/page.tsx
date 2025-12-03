@@ -32,13 +32,13 @@ export default function Projects() {
   const projects = [
     {
       name: "Employee Success Analysis using SQL",
-      tagline: "HR Analytics Dashboard - SQL & Power BI",
-      description: "Comprehensive employee performance and success metrics analysis using SQL queries and Power BI visualizations. Features 26 slides with 22 interactive visualizations covering employee performance trends, success metrics, and data-driven HR insights.",
-      tech: ["SQL", "Power BI", "Data Analysis", "HR Analytics"],
+      tagline: "HR Analytics Dashboard - SQL & Excel",
+      description: "Comprehensive employee performance and success metrics analysis using SQL queries and Excel dashboards. Features 26 slides with 22 interactive visualizations covering employee performance trends, success metrics, and data-driven HR insights.",
+      tech: ["SQL", "Excel", "Data Analysis", "HR Analytics"],
       features: [
         "SQL Query Optimization",
         "Employee Performance Metrics",
-        "Interactive Power BI Dashboards",
+        "Interactive Excel Dashboards",
         "Data-Driven HR Insights",
         "22 Interactive Visualizations",
         "Comprehensive Analysis Reports"
@@ -167,10 +167,11 @@ export default function Projects() {
     },
     {
       name: "Sales Analysis of Cafe Harmony",
-      tagline: "Restaurant Sales Analytics",
-      description: "Detailed sales analysis for Cafe Harmony covering sales performance, revenue trends, product analysis, and business insights for restaurant operations optimization.",
-      tech: ["Data Analysis", "Sales Analytics", "Business Intelligence"],
+      tagline: "Restaurant Sales Analytics - Excel Dashboard",
+      description: "Detailed sales analysis for Cafe Harmony using Excel dashboards covering sales performance, revenue trends, product analysis, and business insights for restaurant operations optimization.",
+      tech: ["Excel", "Data Analysis", "Sales Analytics", "Business Intelligence"],
       features: [
+        "Excel Dashboard Creation",
         "Sales Performance Metrics",
         "Revenue Trend Analysis",
         "Product Performance",
@@ -180,7 +181,7 @@ export default function Projects() {
       image: "☕",
       color: "from-amber-500 to-yellow-600",
       icon: BarChart3,
-      type: "PDF Project",
+      type: "Excel Project",
       pdfUrl: "/projects/Sales Analysis of Cafe Harmony.pdf"
     }
   ];
@@ -210,7 +211,7 @@ export default function Projects() {
               Data Analytics Projects
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Transforming raw data into actionable business insights through Power BI dashboards, Python analysis, SQL queries, and machine learning models.
+              Transforming raw data into actionable business insights through Excel dashboards, Power BI dashboards, Python analysis, SQL queries, and machine learning models.
             </p>
             
             {/* Stats */}
