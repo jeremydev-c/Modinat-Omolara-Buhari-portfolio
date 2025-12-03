@@ -150,10 +150,11 @@ export default function Projects() {
     },
     {
       name: "Tech Hub Retail Sales Analysis",
-      tagline: "Retail Analytics Dashboard",
-      description: "Comprehensive retail sales analysis for Tech Hub featuring executive business intelligence dashboard. Includes customer segmentation, product portfolio analysis, geographic performance, and sales profitability trends.",
-      tech: ["Power BI", "Business Intelligence", "Retail Analytics"],
+      tagline: "Retail Analytics Dashboard - Excel",
+      description: "Comprehensive retail sales analysis for Tech Hub using Excel dashboards featuring executive business intelligence dashboard. Includes customer segmentation, product portfolio analysis, geographic performance, and sales profitability trends.",
+      tech: ["Excel", "Business Intelligence", "Retail Analytics"],
       features: [
+        "Excel Dashboard Creation",
         "Executive BI Dashboard",
         "Customer Segmentation Matrix",
         "Product Portfolio Analysis",
@@ -164,8 +165,8 @@ export default function Projects() {
       image: "🏪",
       color: "from-indigo-500 to-purple-600",
       icon: BarChart3,
-      type: "PDF Project",
-      pdfUrl: "/projects/Tech Hub Retail Sales Analysis.pdf"
+      type: "PowerPoint Project",
+      pdfUrl: "/projects/Tech Hub Retail Sales Analysis.pptx"
     },
     {
       name: "Sales Analysis of Cafe Harmony",
@@ -185,6 +186,25 @@ export default function Projects() {
       icon: BarChart3,
       type: "Excel Project",
       pdfUrl: "/projects/Sales Analysis of Cafe Harmony.pdf"
+    },
+    {
+      name: "Streamline Logistic Solution Analysis",
+      tagline: "Logistics Analytics Dashboard - Excel",
+      description: "Comprehensive logistics solution analysis using Excel dashboards. Features supply chain optimization, delivery performance metrics, route analysis, and operational efficiency insights for logistics operations.",
+      tech: ["Excel", "Data Analysis", "Logistics Analytics", "Business Intelligence"],
+      features: [
+        "Excel Dashboard Creation",
+        "Supply Chain Analysis",
+        "Delivery Performance Metrics",
+        "Route Optimization Analysis",
+        "Operational Efficiency Insights",
+        "Logistics KPIs Tracking"
+      ],
+      image: "🚚",
+      color: "from-teal-500 to-cyan-600",
+      icon: BarChart3,
+      type: "Excel Project",
+      pdfUrl: "/CERTIFICATES/Streamline Logistic Solution Analysis using excel.pdf"
     }
   ];
 
@@ -224,7 +244,7 @@ export default function Projects() {
                 transition={{ delay: 0.2 }}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">8+</div>
+                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">9</div>
                 <div className="text-sm text-gray-400">Projects</div>
               </motion.div>
               <motion.div
