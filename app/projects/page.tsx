@@ -82,7 +82,7 @@ export default function Projects() {
         "Business Intelligence Reports",
         "Data-Driven Recommendations"
       ],
-      image: "🍫",
+      image: "/dashboards/choco-deluxe/choco_deluxe_main_dashboard.png",
       color: "from-yellow-500 to-orange-600",
       icon: ShoppingCart,
       type: "PowerPoint Project",
@@ -102,7 +102,7 @@ export default function Projects() {
         "Predictive Sales Insights",
         "Market Trend Identification"
       ],
-      image: "📱",
+      image: "/dashboards/consumer-electronic/consumer_electronic_main_dashboard.png",
       color: "from-cyan-500 to-blue-600",
       icon: TrendingUp,
       type: "PowerPoint Project",
@@ -181,8 +181,8 @@ export default function Projects() {
         "Operational Insights",
         "Business Recommendations"
       ],
-      image: "☕",
-      color: "from-amber-500 to-yellow-600",
+      image: "/dashboards/cafe-harmony/Screenshot_3-12-2025_15157_.jpeg",
+      color: "from-blue-500 to-cyan-600",
       icon: BarChart3,
       type: "Excel Project",
       pdfUrl: "/projects/Sales Analysis of Cafe Harmony.pdf"
@@ -293,14 +293,40 @@ export default function Projects() {
                 className="card group hover:scale-[1.02] transition-transform"
               >
                 {/* Header */}
-                <div className={`bg-gradient-to-br ${project.color} p-6 rounded-t-lg -m-6 mb-6`}>
-                  <div className="flex items-center justify-between mb-4">
-                    <project.icon className="w-12 h-12 text-white" />
-                    <span className="text-4xl">{project.image}</span>
-                  </div>
-                  <div className="text-xs text-white/80 mb-2">{project.type}</div>
-                  <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
-                  <p className="text-white/90 text-sm">{project.tagline}</p>
+                <div className={`bg-gradient-to-br ${project.color} p-6 rounded-t-lg -m-6 mb-6 ${project.image && project.image.startsWith('/') ? 'relative overflow-hidden' : ''}`}>
+                  {project.image && project.image.startsWith('/') ? (
+                      <div className="relative w-full h-80 rounded-lg overflow-hidden bg-gradient-to-br from-gray-100 to-gray-200">
+                      <img 
+                        src={project.image} 
+                        alt={project.name} 
+                        className="w-full h-full object-contain"
+                        style={{ display: 'block' }}
+                        onError={(e) => {
+                          console.error('Image failed to load:', project.image);
+                          const target = e.target as HTMLImageElement;
+                          target.style.border = '2px solid red';
+                        }}
+                        onLoad={(e) => {
+                          console.log('Image loaded successfully:', project.image);
+                        }}
+                      />
+                      <div className="absolute bottom-0 left-0 right-0 bg-gradient-to-t from-black/90 via-black/70 to-transparent p-6 pt-12">
+                        <div className="text-xs text-white/90 mb-1 font-semibold">{project.type}</div>
+                        <h3 className="text-2xl font-bold text-white mb-1">{project.name}</h3>
+                        <p className="text-white/95 text-sm">{project.tagline}</p>
+                      </div>
+                    </div>
+                  ) : (
+                    <>
+                      <div className="flex items-center justify-between mb-4">
+                        <project.icon className="w-12 h-12 text-white" />
+                        <span className="text-4xl">{project.image}</span>
+                      </div>
+                      <div className="text-xs text-white/80 mb-2">{project.type}</div>
+                      <h3 className="text-2xl font-bold text-white mb-2">{project.name}</h3>
+                      <p className="text-white/90 text-sm">{project.tagline}</p>
+                    </>
+                  )}
                 </div>
 
                 {/* Description */}
