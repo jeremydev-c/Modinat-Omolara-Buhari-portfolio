@@ -165,7 +165,7 @@ export default function Portfolio() {
                 reducing data processing time by 40% for real-time analytics.
               </p>
               <p className="text-gray-300 leading-relaxed">
-                I'm passionate about creating interactive dashboards in Tableau and Power BI that enable 
+                I'm passionate about creating interactive dashboards in Excel, Tableau, and Power BI that enable 
                 stakeholders to make data-driven decisions. My work involves presenting analytical findings 
                 to cross-functional teams and senior management, translating complex datasets into actionable 
                 business strategies.
@@ -192,7 +192,7 @@ export default function Portfolio() {
                   <BarChart3 className="w-6 h-6 text-purple-400 flex-shrink-0 mt-1" />
                   <div>
                     <h4 className="font-semibold text-white mb-1">Interactive Dashboard Development</h4>
-                    <p className="text-gray-400 text-sm">Power BI and Tableau dashboards for stakeholder decision-making</p>
+                    <p className="text-gray-400 text-sm">Excel, Power BI, and Tableau dashboards for stakeholder decision-making</p>
                   </div>
                 </div>
                 <div className="flex items-start gap-3">
