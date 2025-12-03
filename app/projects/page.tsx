@@ -90,10 +90,11 @@ export default function Projects() {
     },
     {
       name: "Consumer Electronic Sales Trend Analysis",
-      tagline: "Trend Analysis Dashboard - Power BI",
-      description: "In-depth consumer electronics sales trend analysis with 19 slides and 11 visualizations. Features time-series analysis, product category performance, seasonal trends, and predictive insights for electronic retail business.",
-      tech: ["Power BI", "Excel", "Trend Analysis", "Time Series"],
+      tagline: "Trend Analysis Dashboard - Tableau",
+      description: "In-depth consumer electronics sales trend analysis using Tableau dashboards with 19 slides and 11 visualizations. Features time-series analysis, product category performance, seasonal trends, and predictive insights for electronic retail business.",
+      tech: ["Tableau", "Trend Analysis", "Time Series"],
       features: [
+        "Tableau Dashboard Creation",
         "Time-Series Trend Analysis",
         "Product Category Performance",
         "Seasonal Pattern Recognition",
