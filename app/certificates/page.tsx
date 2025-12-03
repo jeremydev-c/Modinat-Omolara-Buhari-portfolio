@@ -44,26 +44,6 @@ export default function Certificates() {
       pdf: "/CERTIFICATES/Modinat Omolara Buhari .cc.pdf",
       icon: FileText,
       color: "from-green-500 to-emerald-600"
-    },
-    {
-      title: "NovaMed Solutions Sales Performance Analysis",
-      issuer: "Data Analytics EU - Class B - Cohort 25-04",
-      date: "2025",
-      description: "Project certificate for comprehensive sales performance analysis and reporting. Features top/bottom analysis dashboards, profit margin tracking, and customer segmentation insights.",
-      skills: ["Power BI", "Sales Analysis", "Business Intelligence", "Data Visualization"],
-      pdf: "/CERTIFICATES/Novo Med sales performance Analsysis ppt.pdf",
-      icon: Award,
-      color: "from-yellow-500 to-orange-600"
-    },
-    {
-      title: "Streamline Logistic Solution Analysis",
-      issuer: "Data Analytics EU",
-      date: "2025",
-      description: "Excel-based analysis certification demonstrating advanced data analysis skills, pivot tables, and business intelligence capabilities.",
-      skills: ["Excel", "Data Analysis", "Pivot Tables", "Business Intelligence"],
-      pdf: "/CERTIFICATES/Streamline Logistic Solution Analysis using excel.pdf",
-      icon: FileText,
-      color: "from-cyan-500 to-blue-600"
     }
   ];
 
@@ -104,7 +84,7 @@ export default function Certificates() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">5+</div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">3</div>
               <div className="text-sm text-gray-400">Certificates</div>
             </motion.div>
             <motion.div
