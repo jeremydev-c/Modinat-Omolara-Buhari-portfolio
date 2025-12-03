@@ -1,7 +1,7 @@
 'use client';
 
 import { motion } from 'framer-motion';
-import { Award, FileText, Download, ExternalLink, CheckCircle } from 'lucide-react';
+import { Award, FileText, Download, ExternalLink, CheckCircle, Trophy } from 'lucide-react';
 import Link from 'next/link';
 import { useEffect, useState } from 'react';
 import Navigation from '../components/Navigation';
@@ -44,6 +44,16 @@ export default function Certificates() {
       pdf: "/CERTIFICATES/Modinat Omolara Buhari .cc.pdf",
       icon: FileText,
       color: "from-green-500 to-emerald-600"
+    },
+    {
+      title: "Hackathon Certificate",
+      issuer: "Hackathon Competition",
+      date: "2025",
+      description: "Recognition for outstanding performance and achievement in hackathon competition, demonstrating technical skills, problem-solving abilities, and innovation in data analytics.",
+      skills: ["Hackathon", "Problem Solving", "Innovation", "Data Analytics", "Competition"],
+      pdf: "/CERTIFICATES/Modinat_Omolara_Buhari_Hackathon_Certificate.pdf",
+      icon: Trophy,
+      color: "from-yellow-500 to-orange-600"
     }
   ];
 
@@ -84,7 +94,7 @@ export default function Certificates() {
               transition={{ delay: 0.2 }}
               className="text-center"
             >
-              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">3</div>
+              <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">4</div>
               <div className="text-sm text-gray-400">Certificates</div>
             </motion.div>
             <motion.div
