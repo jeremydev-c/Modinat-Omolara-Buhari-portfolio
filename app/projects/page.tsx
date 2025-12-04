@@ -234,7 +234,7 @@ export default function Projects() {
               Data Analytics Projects
             </h1>
             <p className="text-xl md:text-2xl text-gray-300 max-w-3xl mx-auto mb-8">
-              Transforming raw data into actionable business insights through Excel dashboards, Power BI dashboards, Python analysis, SQL queries, and machine learning models.
+              Transforming raw data into actionable business insights through Excel dashboards, Power BI dashboards, Tableau dashboards, Python analysis, SQL queries, and machine learning models.
             </p>
             
             {/* Stats */}
