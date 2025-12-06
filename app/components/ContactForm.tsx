@@ -12,6 +12,7 @@ export default function ContactForm() {
     message: '',
   });
   const [status, setStatus] = useState<'idle' | 'sending' | 'success' | 'error'>('idle');
+  const [errorMessage, setErrorMessage] = useState<string>('');
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement>) => {
     setFormData({
@@ -36,17 +37,25 @@ export default function ContactForm() {
       const data = await response.json();
 
       if (!response.ok) {
-        throw new Error(data.error || 'Failed to send message');
+        const errorMsg = data.error || data.message || 'Failed to send message';
+        const details = data.details ? ` Details: ${JSON.stringify(data.details)}` : '';
+        throw new Error(errorMsg + details);
       }
 
       setStatus('success');
+      setErrorMessage('');
       setFormData({ name: '', email: '', subject: '', message: '' });
       
       setTimeout(() => setStatus('idle'), 5000);
     } catch (error) {
       console.error('Contact form error:', error);
+      const errorMsg = error instanceof Error ? error.message : 'Something went wrong. Please try again.';
+      setErrorMessage(errorMsg);
       setStatus('error');
-      setTimeout(() => setStatus('idle'), 5000);
+      setTimeout(() => {
+        setStatus('idle');
+        setErrorMessage('');
+      }, 10000); // Show error for 10 seconds
     }
   };
 
@@ -171,9 +180,18 @@ export default function ContactForm() {
           <motion.div
             initial={{ opacity: 0, y: -10 }}
             animate={{ opacity: 1, y: 0 }}
-            className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm text-center"
+            className="p-4 bg-red-500/10 border border-red-500/20 rounded-lg text-red-400 text-sm"
           >
-            Something went wrong. Please try again or email me directly at omolarabuhari1@gmail.com
+            <div className="flex items-start gap-2 mb-2">
+              <AlertCircle className="w-5 h-5 mt-0.5 flex-shrink-0" />
+              <div className="flex-1">
+                <p className="font-semibold mb-1">Error sending message</p>
+                <p className="text-red-300/80 text-xs break-words">{errorMessage || 'Something went wrong. Please try again.'}</p>
+              </div>
+            </div>
+            <p className="text-red-300/60 text-xs mt-2 pt-2 border-t border-red-500/20">
+              You can also email directly at: <a href="mailto:omolarabuhari1@gmail.com" className="underline">omolarabuhari1@gmail.com</a>
+            </p>
           </motion.div>
         )}
       </div>

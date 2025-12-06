@@ -40,12 +40,28 @@ export async function POST(request: NextRequest) {
     });
 
     if (error) {
-      console.error('Resend error:', error);
+      console.error('Resend error:', JSON.stringify(error, null, 2));
+      
+      // Format error message for display
+      let errorMessage = 'Failed to send email';
+      if (error && typeof error === 'object') {
+        if ('message' in error) {
+          errorMessage = String(error.message);
+        } else if ('name' in error) {
+          errorMessage = `${error.name}: ${error.message || 'Unknown error'}`;
+        }
+      }
+      
       return NextResponse.json(
-        { error: 'Failed to send email' },
+        { 
+          error: errorMessage,
+          details: error 
+        },
         { status: 500 }
       );
     }
+
+    console.log('Email sent successfully:', data);
 
     return NextResponse.json(
       { message: 'Email sent successfully', data },
@@ -53,8 +69,9 @@ export async function POST(request: NextRequest) {
     );
   } catch (error) {
     console.error('Contact API error:', error);
+    const errorMessage = error instanceof Error ? error.message : 'Internal server error';
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { error: errorMessage },
       { status: 500 }
     );
   }
