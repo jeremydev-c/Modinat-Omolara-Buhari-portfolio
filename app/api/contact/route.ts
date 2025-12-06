@@ -45,10 +45,14 @@ export async function POST(request: NextRequest) {
       // Format error message for display
       let errorMessage = 'Failed to send email';
       if (error && typeof error === 'object') {
-        if ('message' in error) {
-          errorMessage = String(error.message);
-        } else if ('name' in error) {
-          errorMessage = `${error.name}: ${error.message || 'Unknown error'}`;
+        const errorObj = error as Record<string, unknown>;
+        if ('message' in errorObj && typeof errorObj.message === 'string') {
+          errorMessage = errorObj.message;
+        } else if ('name' in errorObj && typeof errorObj.name === 'string') {
+          const message = ('message' in errorObj && typeof errorObj.message === 'string') 
+            ? errorObj.message 
+            : 'Unknown error';
+          errorMessage = `${errorObj.name}: ${message}`;
         }
       }
       
