@@ -2,9 +2,8 @@
 
 import { useParams } from 'next/navigation';
 import { motion } from 'framer-motion';
-import { ArrowLeft, Download, ExternalLink, FileText } from 'lucide-react';
+import { ArrowLeft, Download } from 'lucide-react';
 import Link from 'next/link';
-import { useEffect, useState } from 'react';
 
 const projectImages: Record<string, string[]> = {
   'employee-success-analysis-using-sql': [
@@ -52,18 +51,6 @@ export default function ViewProject() {
   const slug = params?.slug as string;
   const images = projectImages[slug] || [];
   const fileUrl = projectFiles[slug] || '';
-  const [baseUrl, setBaseUrl] = useState('');
-
-  useEffect(() => {
-    setBaseUrl(window.location.origin);
-  }, []);
-
-  const getOfficeViewerUrl = () => {
-    if (baseUrl && fileUrl) {
-      return `https://view.officeapps.live.com/op/embed.aspx?src=${encodeURIComponent(baseUrl + fileUrl)}`;
-    }
-    return null;
-  };
 
   return (
     <div className="min-h-screen bg-gradient-to-br from-gray-900 via-gray-800 to-gray-900">
@@ -77,21 +64,10 @@ export default function ViewProject() {
         </Link>
 
         <div className="mb-6 flex gap-4 flex-wrap">
-          {getOfficeViewerUrl() && (
-            <a
-              href={getOfficeViewerUrl()!}
-              target="_blank"
-              rel="noopener noreferrer"
-              className="btn-primary flex items-center gap-2"
-            >
-              <FileText className="w-5 h-5" />
-              View Full PowerPoint Online
-            </a>
-          )}
           <a
             href={fileUrl}
             download
-            className="btn-secondary flex items-center gap-2"
+            className="btn-primary flex items-center gap-2"
           >
             <Download className="w-5 h-5" />
             Download PowerPoint

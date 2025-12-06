@@ -32,44 +32,6 @@ export default function Projects() {
 
   const projects = [
     {
-      name: "Employee Success Analysis using SQL",
-      tagline: "HR Analytics Dashboard - SQL & Excel",
-      description: "Comprehensive employee performance and success metrics analysis using SQL queries and Excel dashboards. Features 26 slides with 22 interactive visualizations covering employee performance trends, success metrics, and data-driven HR insights.",
-      tech: ["SQL", "Excel", "Data Analysis", "HR Analytics"],
-      features: [
-        "SQL Query Optimization",
-        "Employee Performance Metrics",
-        "Interactive Excel Dashboards",
-        "Data-Driven HR Insights",
-        "22 Interactive Visualizations",
-        "Comprehensive Analysis Reports"
-      ],
-      image: "👥",
-      color: "from-blue-500 to-cyan-600",
-      icon: Users,
-      type: "PowerPoint Project",
-      pdfUrl: "/projects/Employee Success Analysis using SQL.pptx"
-    },
-    {
-      name: "NovoMed Sales Performance Analysis",
-      tagline: "Pharmaceutical Sales Dashboard - Top/Bottom Analysis",
-      description: "Advanced sales performance analysis for NovaMed Solutions featuring top/bottom analysis dashboards. Includes profit margin analysis, revenue trends, drug performance metrics, and customer segmentation. Built with Power BI for interactive business intelligence.",
-      tech: ["Power BI", "Data Visualization", "Business Intelligence"],
-      features: [
-        "Top/Bottom Drug Analysis",
-        "Profit Margin Tracking (82%)",
-        "Revenue & COGS Analysis",
-        "Customer Performance Metrics",
-        "Month-on-Month Trends",
-        "Interactive Dashboard Views"
-      ],
-      image: "💊",
-      color: "from-purple-500 to-indigo-600",
-      icon: BarChart3,
-      type: "PowerPoint Project",
-      pdfUrl: "/projects/NovoMed Sales Performance Analysis.pptx"
-    },
-    {
       name: "Analysis of Choco De Luxe Sales Data",
       tagline: "Sales Analytics Dashboard - Tableau",
       description: "Comprehensive sales data analysis for Choco De Luxe using Tableau dashboards featuring 16 slides with 12 detailed visualizations. Includes sales trends, product performance, regional analysis, and actionable business insights for strategic decision-making.",
@@ -108,6 +70,82 @@ export default function Projects() {
       icon: TrendingUp,
       type: "PowerPoint Project",
       pdfUrl: "/projects/Consumer Electronic Sales Trend Analysis.pptx"
+    },
+    {
+      name: "Sales Analysis of Cafe Harmony",
+      tagline: "Restaurant Sales Analytics - Excel Dashboard",
+      description: "Detailed sales analysis for Cafe Harmony using Excel dashboards covering sales performance, revenue trends, product analysis, and business insights for restaurant operations optimization.",
+      tech: ["Excel", "Data Analysis", "Sales Analytics", "Business Intelligence"],
+      features: [
+        "Excel Dashboard Creation",
+        "Sales Performance Metrics",
+        "Revenue Trend Analysis",
+        "Product Performance",
+        "Operational Insights",
+        "Business Recommendations"
+      ],
+      image: "/dashboards/cafe-harmony/Screenshot_3-12-2025_15157_.jpeg",
+      color: "from-blue-500 to-cyan-600",
+      icon: BarChart3,
+      type: "Excel Project",
+      pdfUrl: "/projects/Sales Analysis of Cafe Harmony.pdf"
+    },
+    {
+      name: "Streamline Logistic Solution Analysis",
+      tagline: "Logistics Analytics Dashboard - Excel",
+      description: "Comprehensive logistics solution analysis using Excel dashboards. Features supply chain optimization, delivery performance metrics, route analysis, and operational efficiency insights for logistics operations.",
+      tech: ["Excel", "Data Analysis", "Logistics Analytics", "Business Intelligence"],
+      features: [
+        "Excel Dashboard Creation",
+        "Supply Chain Analysis",
+        "Delivery Performance Metrics",
+        "Route Optimization Analysis",
+        "Operational Efficiency Insights",
+        "Logistics KPIs Tracking"
+      ],
+      image: "/dashboards/streamline-logistics/streamline_logistics_page16_dashboard.png",
+      color: "from-teal-500 to-cyan-600",
+      icon: BarChart3,
+      type: "Excel Project",
+      pdfUrl: "/CERTIFICATES/Streamline Logistic Solution Analysis using excel.pdf"
+    },
+    {
+      name: "Employee Success Analysis using SQL",
+      tagline: "HR Analytics Dashboard - SQL & Excel",
+      description: "Comprehensive employee performance and success metrics analysis using SQL queries and Excel dashboards. Features 26 slides with 22 interactive visualizations covering employee performance trends, success metrics, and data-driven HR insights.",
+      tech: ["SQL", "Excel", "Data Analysis", "HR Analytics"],
+      features: [
+        "SQL Query Optimization",
+        "Employee Performance Metrics",
+        "Interactive Excel Dashboards",
+        "Data-Driven HR Insights",
+        "22 Interactive Visualizations",
+        "Comprehensive Analysis Reports"
+      ],
+      image: "👥",
+      color: "from-blue-500 to-cyan-600",
+      icon: Users,
+      type: "PowerPoint Project",
+      pdfUrl: "/projects/Employee Success Analysis using SQL.pptx"
+    },
+    {
+      name: "NovoMed Sales Performance Analysis",
+      tagline: "Pharmaceutical Sales Dashboard - Top/Bottom Analysis",
+      description: "Advanced sales performance analysis for NovaMed Solutions featuring top/bottom analysis dashboards. Includes profit margin analysis, revenue trends, drug performance metrics, and customer segmentation. Built with Power BI for interactive business intelligence.",
+      tech: ["Power BI", "Data Visualization", "Business Intelligence"],
+      features: [
+        "Top/Bottom Drug Analysis",
+        "Profit Margin Tracking (82%)",
+        "Revenue & COGS Analysis",
+        "Customer Performance Metrics",
+        "Month-on-Month Trends",
+        "Interactive Dashboard Views"
+      ],
+      image: "💊",
+      color: "from-purple-500 to-indigo-600",
+      icon: BarChart3,
+      type: "PowerPoint Project",
+      pdfUrl: "/projects/NovoMed Sales Performance Analysis.pptx"
     },
     {
       name: "Week 2: Sales & Customer Behaviour Insights - Green Cart Ltd",
@@ -167,45 +205,7 @@ export default function Projects() {
       color: "from-indigo-500 to-purple-600",
       icon: BarChart3,
       type: "PowerPoint Project",
-      pdfUrl: "/projects/Tech Hub Retail Sales Analysis.pptx"
-    },
-    {
-      name: "Sales Analysis of Cafe Harmony",
-      tagline: "Restaurant Sales Analytics - Excel Dashboard",
-      description: "Detailed sales analysis for Cafe Harmony using Excel dashboards covering sales performance, revenue trends, product analysis, and business insights for restaurant operations optimization.",
-      tech: ["Excel", "Data Analysis", "Sales Analytics", "Business Intelligence"],
-      features: [
-        "Excel Dashboard Creation",
-        "Sales Performance Metrics",
-        "Revenue Trend Analysis",
-        "Product Performance",
-        "Operational Insights",
-        "Business Recommendations"
-      ],
-      image: "/dashboards/cafe-harmony/Screenshot_3-12-2025_15157_.jpeg",
-      color: "from-blue-500 to-cyan-600",
-      icon: BarChart3,
-      type: "Excel Project",
-      pdfUrl: "/projects/Sales Analysis of Cafe Harmony.pdf"
-    },
-    {
-      name: "Streamline Logistic Solution Analysis",
-      tagline: "Logistics Analytics Dashboard - Excel",
-      description: "Comprehensive logistics solution analysis using Excel dashboards. Features supply chain optimization, delivery performance metrics, route analysis, and operational efficiency insights for logistics operations.",
-      tech: ["Excel", "Data Analysis", "Logistics Analytics", "Business Intelligence"],
-      features: [
-        "Excel Dashboard Creation",
-        "Supply Chain Analysis",
-        "Delivery Performance Metrics",
-        "Route Optimization Analysis",
-        "Operational Efficiency Insights",
-        "Logistics KPIs Tracking"
-      ],
-      image: "🚚",
-      color: "from-teal-500 to-cyan-600",
-      icon: BarChart3,
-      type: "Excel Project",
-      pdfUrl: "/CERTIFICATES/Streamline Logistic Solution Analysis using excel.pdf"
+      pdfUrl: "/projects/Tech Hub Retail Sales Analysis.pdf"
     }
   ];
 
@@ -272,7 +272,7 @@ export default function Projects() {
                 transition={{ delay: 0.5 }}
                 className="text-center"
               >
-                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">48</div>
+                <div className="text-3xl md:text-4xl font-bold text-gradient mb-2">20</div>
                 <div className="text-sm text-gray-400">Dashboard Images</div>
               </motion.div>
             </div>
