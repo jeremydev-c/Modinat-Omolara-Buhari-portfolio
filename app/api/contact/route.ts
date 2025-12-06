@@ -26,8 +26,8 @@ export async function POST(request: NextRequest) {
     }
 
     const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <onboarding@resend.dev>', // Temporarily using default domain to test
-      to: ['nduatijeremy7@gmail.com'],
+      from: 'Portfolio Contact <contact@omalarabuhari.com>',
+      to: ['omolarabuhari1@gmail.com'],
       subject: `Portfolio Contact: ${subject}`,
       html: `
         <h2>New Contact Form Submission</h2>
