@@ -97,7 +97,7 @@ export default function Portfolio() {
                 <div className="text-sm text-gray-400">ETL Time Reduction</div>
               </div>
               <div>
-                <div className="text-2xl md:text-3xl font-bold text-yellow-400">2+</div>
+                <div className="text-2xl md:text-3xl font-bold text-yellow-400">1+</div>
                 <div className="text-sm text-gray-400">Years Experience</div>
               </div>
             </div>
