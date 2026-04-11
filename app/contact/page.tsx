@@ -176,7 +176,7 @@ export default function Contact() {
                     <Linkedin className="w-6 h-6 text-blue-400" />
                   </a>
                   <a
-                    href="https://github.com/modinat-buhari"
+                    href="https://github.com/Omolara-Buhari"
                     target="_blank"
                     rel="noopener noreferrer"
                     className="p-3 bg-gray-800/50 rounded-lg hover:bg-gray-800 transition-colors"
