@@ -52,7 +52,8 @@ export async function POST(request: NextRequest) {
     };
 
     const { error } = await resend.emails.send({
-      from: process.env.FROM_EMAIL || 'Portfolio Contact <contact@omalarabuhari.com>',
+      // Must be on a domain verified in Resend: omolarabuhari.com has its Resend DNS records.
+      from: process.env.FROM_EMAIL || 'Portfolio Contact <contact@omolarabuhari.com>',
       to: ['omolarabuhari1@gmail.com'],
       replyTo: email,
       subject: `Portfolio: ${subject.replace(/[\r\n]+/g, ' ')}`,
