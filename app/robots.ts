@@ -1,16 +1,9 @@
 import { MetadataRoute } from 'next';
+import { person } from './lib/content';
 
 export default function robots(): MetadataRoute.Robots {
   return {
-    rules: [
-      {
-        userAgent: '*',
-        allow: '/',
-        disallow: ['/api/', '/_next/'],
-      },
-    ],
-    sitemap: 'https://modinat-portfolio.vercel.app/sitemap.xml',
+    rules: [{ userAgent: '*', allow: '/', disallow: ['/api/'] }],
+    sitemap: `${person.url}/sitemap.xml`,
   };
 }
-
-

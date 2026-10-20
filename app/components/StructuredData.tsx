@@ -1,45 +1,26 @@
+import { credentials, person } from '../lib/content';
+
 export default function StructuredData() {
-  const structuredData = {
-    "@context": "https://schema.org",
-    "@type": "Person",
-    "name": "Modinat Omolara Buhari",
-    "jobTitle": "Data Analyst | Business Intelligence | Reporting Analyst",
-    "description": "Data Analyst with expertise in ETL processes, data warehousing, and cloud-based analytics solutions. Specializing in SQL, Excel, Power BI, Python, Tableau, and data visualization tools.",
-    "url": "https://modinat-portfolio.vercel.app",
-    "email": "omolarabuhari1@gmail.com",
-    "telephone": "+37060291709",
-    "address": {
-      "@type": "PostalAddress",
-      "addressLocality": "Vilnius",
-      "addressCountry": "LT"
-    },
-    "sameAs": [
-      "https://linkedin.com/in/omolarabuhari"
-    ],
-    "knowsAbout": [
-      "Data Analysis",
-      "Business Intelligence",
-      "Power BI",
-      "SQL",
-      "Python",
-      "Tableau",
-      "ETL Processes",
-      "Data Warehousing"
-    ],
-    "hasCredential": [
-      {
-        "@type": "EducationalOccupationalCredential",
-        "credentialCategory": "Professional Certificate",
-        "name": "Master Data Analyst (MDA)"
-      }
-    ]
+  const data = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: person.fullName,
+    alternateName: person.name,
+    jobTitle: 'Data Analyst',
+    description:
+      'Data analyst specialising in business intelligence and reporting with Power BI, Tableau, Excel, SQL and Python.',
+    url: person.url,
+    email: `mailto:${person.email}`,
+    telephone: person.phoneHref.replace('tel:', ''),
+    address: { '@type': 'PostalAddress', addressLocality: 'Vilnius', addressCountry: 'LT' },
+    sameAs: [person.linkedin, person.github],
+    knowsAbout: ['Data Analysis', 'Business Intelligence', 'Power BI', 'Tableau', 'SQL', 'Python', 'Excel', 'ETL'],
+    hasCredential: credentials.map((c) => ({
+      '@type': 'EducationalOccupationalCredential',
+      name: c.title,
+      recognizedBy: { '@type': 'Organization', name: c.issuer.split(' · ')[0] },
+    })),
   };
 
-  return (
-    <script
-      type="application/ld+json"
-      dangerouslySetInnerHTML={{ __html: JSON.stringify(structuredData) }}
-    />
-  );
+  return <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify(data) }} />;
 }
-

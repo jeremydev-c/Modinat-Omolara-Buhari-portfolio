@@ -3,81 +3,79 @@ import { Resend } from 'resend';
 
 const resend = process.env.RESEND_KEY ? new Resend(process.env.RESEND_KEY) : null;
 
+// Visitors' text goes into an HTML email, so it must never be able to inject markup.
+function escapeHtml(value: string) {
+  return value
+    .replace(/&/g, '&amp;')
+    .replace(/</g, '&lt;')
+    .replace(/>/g, '&gt;')
+    .replace(/"/g, '&quot;')
+    .replace(/'/g, '&#39;');
+}
+
+const LIMITS = { name: 100, email: 200, subject: 150, message: 5000 };
+
 export async function POST(request: NextRequest) {
   try {
     const body = await request.json();
-    const { name, email, subject, message } = body;
+    const name = String(body?.name ?? '').trim();
+    const email = String(body?.email ?? '').trim();
+    const subject = String(body?.subject ?? '').trim();
+    const message = String(body?.message ?? '').trim();
 
     if (!name || !email || !subject || !message) {
-      return NextResponse.json(
-        { error: 'All fields are required' },
-        { status: 400 }
-      );
+      return NextResponse.json({ error: 'All fields are required.' }, { status: 400 });
+    }
+    if (
+      name.length > LIMITS.name ||
+      email.length > LIMITS.email ||
+      subject.length > LIMITS.subject ||
+      message.length > LIMITS.message
+    ) {
+      return NextResponse.json({ error: 'That message is too long.' }, { status: 400 });
+    }
+    if (!/^[^\s@]+@[^\s@]+\.[^\s@]+$/.test(email)) {
+      return NextResponse.json({ error: 'Please enter a valid email address.' }, { status: 400 });
     }
 
-    // Send email using Resend (if API key is configured)
+    // Without an email key the message would be lost, so say so instead of pretending it was sent.
     if (!resend) {
-      // If Resend is not configured, just log the contact and return success
-      console.log('Contact form submission (Resend not configured):', { name, email, subject, message });
-      return NextResponse.json(
-        { message: 'Message received successfully (email service not configured)' },
-        { status: 200 }
-      );
+      console.error('Contact form: RESEND_KEY is not configured');
+      return NextResponse.json({ error: 'The contact form is not available right now.' }, { status: 503 });
     }
 
-    const { data, error } = await resend.emails.send({
-      from: 'Portfolio Contact <contact@omalarabuhari.com>',
+    const safe = {
+      name: escapeHtml(name),
+      email: escapeHtml(email),
+      subject: escapeHtml(subject),
+      message: escapeHtml(message).replace(/\n/g, '<br>'),
+    };
+
+    const { error } = await resend.emails.send({
+      from: process.env.FROM_EMAIL || 'Portfolio Contact <contact@omalarabuhari.com>',
       to: ['omolarabuhari1@gmail.com'],
-      subject: `Portfolio Contact: ${subject}`,
+      replyTo: email,
+      subject: `Portfolio: ${subject.replace(/[\r\n]+/g, ' ')}`,
       html: `
-        <h2>New Contact Form Submission</h2>
-        <p><strong>Name:</strong> ${name}</p>
-        <p><strong>Email:</strong> ${email}</p>
-        <p><strong>Subject:</strong> ${subject}</p>
-        <p><strong>Message:</strong></p>
-        <p>${message.replace(/\n/g, '<br>')}</p>
+        <div style="font-family: Arial, sans-serif; max-width: 600px; color: #111a2e;">
+          <p style="font-family: monospace; font-size: 11px; letter-spacing: 0.12em; text-transform: uppercase; color: #646c7e;">New message from your portfolio</p>
+          <h2 style="margin: 8px 0 16px;">${safe.subject}</h2>
+          <p style="margin: 4px 0;"><strong>Name:</strong> ${safe.name}</p>
+          <p style="margin: 4px 0;"><strong>Email:</strong> ${safe.email}</p>
+          <div style="border-top: 2px solid #111a2e; margin-top: 16px; padding-top: 12px; line-height: 1.6;">${safe.message}</div>
+        </div>
       `,
+      text: `New message from your portfolio\n\nName: ${name}\nEmail: ${email}\nSubject: ${subject}\n\n${message}`,
     });
 
     if (error) {
-      console.error('Resend error:', JSON.stringify(error, null, 2));
-      
-      // Format error message for display
-      let errorMessage = 'Failed to send email';
-      if (error && typeof error === 'object') {
-        const errorObj = error as Record<string, unknown>;
-        if ('message' in errorObj && typeof errorObj.message === 'string') {
-          errorMessage = errorObj.message;
-        } else if ('name' in errorObj && typeof errorObj.name === 'string') {
-          const message = ('message' in errorObj && typeof errorObj.message === 'string') 
-            ? errorObj.message 
-            : 'Unknown error';
-          errorMessage = `${errorObj.name}: ${message}`;
-        }
-      }
-      
-      return NextResponse.json(
-        { 
-          error: errorMessage,
-          details: error 
-        },
-        { status: 500 }
-      );
+      console.error('Resend error:', JSON.stringify(error));
+      return NextResponse.json({ error: 'The message could not be sent.' }, { status: 502 });
     }
 
-    console.log('Email sent successfully:', data);
-
-    return NextResponse.json(
-      { message: 'Email sent successfully', data },
-      { status: 200 }
-    );
+    return NextResponse.json({ message: 'Message sent.' }, { status: 200 });
   } catch (error) {
     console.error('Contact API error:', error);
-    const errorMessage = error instanceof Error ? error.message : 'Internal server error';
-    return NextResponse.json(
-      { error: errorMessage },
-      { status: 500 }
-    );
+    return NextResponse.json({ error: 'The message could not be sent.' }, { status: 500 });
   }
 }
-

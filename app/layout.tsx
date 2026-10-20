@@ -1,96 +1,82 @@
-import type { Metadata } from "next";
-import "./globals.css";
-import LoadingScreen from "./components/LoadingScreen";
-import ErrorBoundary from "./components/ErrorBoundary";
-import NavigationPopup from "./components/NavigationPopup";
-import StructuredData from "./components/StructuredData";
-import { Analytics } from "@vercel/analytics/react";
-import { SpeedInsights } from "@vercel/speed-insights/next";
+import type { Metadata, Viewport } from 'next';
+import { Archivo, IBM_Plex_Mono } from 'next/font/google';
+import './globals.css';
+import SiteHeader from './components/SiteHeader';
+import SiteFooter from './components/SiteFooter';
+import MotionProvider from './components/MotionProvider';
+import StructuredData from './components/StructuredData';
+import { person } from './lib/content';
+import { Analytics } from '@vercel/analytics/react';
+import { SpeedInsights } from '@vercel/speed-insights/next';
+
+const sans = Archivo({ subsets: ['latin'], axes: ['wdth'], variable: '--font-sans', display: 'swap' });
+const mono = IBM_Plex_Mono({ subsets: ['latin'], weight: ['400', '500'], variable: '--font-mono', display: 'swap' });
+
+const description =
+  'Omolara Buhari is a data analyst in Vilnius who turns messy, multi-source data into clear Power BI, Tableau and Excel dashboards that people use to make decisions.';
 
 export const metadata: Metadata = {
   title: {
-    default: "Modinat Omolara Buhari - Data Analyst | Business Intelligence | Reporting Analyst",
-    template: "%s | Modinat Omolara Buhari",
+    default: 'Omolara Buhari — Data Analyst',
+    template: '%s — Omolara Buhari',
   },
-    description: "Data Analyst | Business Intelligence | Reporting Analyst specializing in Excel, Power BI, SQL, Tableau, Microsoft Fabrics, and Python. Expertise in ETL processes, data warehousing, and cloud-based analytics solutions to optimize business intelligence and deliver actionable insights.",
+  description,
   keywords: [
-    "data analyst",
-    "business intelligence",
-    "Power BI",
-    "Tableau",
-    "SQL",
-    "Python",
-    "data visualization",
-    "ETL",
-    "data warehousing",
-    "analytics",
-    "portfolio",
-    "Modinat Omolara Buhari",
+    'Modinat Omolara Buhari',
+    'data analyst',
+    'business intelligence',
+    'Power BI',
+    'Tableau',
+    'SQL',
+    'Excel dashboards',
+    'Vilnius',
   ],
-  authors: [{ name: "Modinat Omolara Buhari" }],
-  creator: "Modinat Omolara Buhari",
-  metadataBase: new URL("https://modinat-portfolio.vercel.app"),
-  alternates: {
-    canonical: "/",
-  },
+  authors: [{ name: person.fullName }],
+  metadataBase: new URL(person.url),
+  alternates: { canonical: '/' },
   openGraph: {
-    type: "website",
-    locale: "en_US",
-    url: "https://modinat-portfolio.vercel.app",
-    siteName: "Modinat Omolara Buhari Portfolio",
-    title: "Modinat Omolara Buhari - Data Analyst | BI Specialist",
-    description: "Data Analyst transforming data into actionable business insights with Power BI, SQL, Python, and Tableau.",
-    images: [
-      {
-        url: "/og-image.jpg",
-        width: 1200,
-        height: 630,
-        alt: "Modinat Omolara Buhari - Data Analyst Portfolio",
-      },
-    ],
+    type: 'website',
+    url: '/',
+    siteName: person.name,
+    title: 'Omolara Buhari — Data Analyst',
+    description,
+    images: [{ url: '/dashboards/choco-deluxe/choco_deluxe_main_dashboard.png', alt: 'A dashboard by Omolara Buhari' }],
   },
-  twitter: {
-    card: "summary_large_image",
-    title: "Modinat Omolara Buhari - Data Analyst | BI Specialist",
-    description: "Transforming data into actionable business insights. Power BI • SQL • Python • Tableau",
-  },
-  robots: {
-    index: true,
-    follow: true,
-    googleBot: {
-      index: true,
-      follow: true,
-      "max-video-preview": -1,
-      "max-image-preview": "large",
-      "max-snippet": -1,
-    },
-  },
+  twitter: { card: 'summary_large_image', title: 'Omolara Buhari — Data Analyst', description },
+  robots: { index: true, follow: true },
 };
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export const viewport: Viewport = {
+  themeColor: [
+    { media: '(prefers-color-scheme: light)', color: '#f1f1ed' },
+    { media: '(prefers-color-scheme: dark)', color: '#0b111f' },
+  ],
+};
+
+// Runs before paint so a saved light/dark choice never flashes the wrong theme.
+const themeScript = `try{var t=localStorage.getItem('theme');if(t==='light'||t==='dark')document.documentElement.setAttribute('data-theme',t)}catch(e){}`;
+
+export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {
   return (
-    <html lang="en">
+    <html lang="en" className={`${sans.variable} ${mono.variable}`} suppressHydrationWarning>
       <head>
-        <link rel="icon" href="/icon.jpg" />
-        <link rel="apple-touch-icon" href="/icon.jpg" />
-        <meta name="theme-color" content="#3b82f6" />
-        <meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=5" />
-        <link rel="preconnect" href="https://fonts.googleapis.com" />
-        <link rel="preconnect" href="https://fonts.gstatic.com" crossOrigin="anonymous" />
+        <script dangerouslySetInnerHTML={{ __html: themeScript }} />
         <StructuredData />
       </head>
-      <body className="antialiased">
-        <ErrorBoundary>
-          <LoadingScreen />
-          {children}
-          <NavigationPopup />
-          <Analytics />
-          <SpeedInsights />
-        </ErrorBoundary>
+      <body>
+        <a
+          href="#main"
+          className="sr-only focus:not-sr-only focus:fixed focus:left-4 focus:top-4 focus:z-[70] focus:bg-ink focus:px-4 focus:py-2 focus:text-paper"
+        >
+          Skip to content
+        </a>
+        <MotionProvider>
+          <SiteHeader />
+          <main id="main">{children}</main>
+          <SiteFooter />
+        </MotionProvider>
+        <Analytics />
+        <SpeedInsights />
       </body>
     </html>
   );

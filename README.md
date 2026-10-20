@@ -2,31 +2,25 @@
 
 A professional, modern portfolio website showcasing data analytics expertise, projects, and achievements.
 
-## 🚀 Features
+## Features
 
-- **Modern Design**: Clean, professional UI with smooth animations
-- **Responsive**: Fully responsive design for all devices
-- **Fast Performance**: Optimized with Next.js 16 and Tailwind CSS
-- **SEO Optimized**: Complete SEO setup with structured data
-- **Interactive Dashboards**: View enhanced Power BI dashboard visualizations
-- **Project Showcase**: 8+ data analytics projects with detailed case studies
-- **Certificate Gallery**: 5+ verified certificates and achievements
-- **Contact Form**: Integrated contact form with email functionality
-- **Loading Screen**: Professional animated loading experience
+- "Analyst's report" design: navy ink, burnt orange and claret from her own dashboards, condensed Archivo figures and IBM Plex Mono labels
+- Light and dark themes
+- Filterable project table (by tool) and a projects-by-tool chart counted from the project data
+- A page per project: the question, what was done, what it showed, dashboard exhibits and source files
+- Recommendations quoted in full, credentials with their PDFs, and a contact form (Resend)
+- All content in `app/lib/content.ts`
 
 ## 📁 Project Structure
 
 ```
 modinat-portfolio/
 ├── app/
-│   ├── api/              # API routes (contact form, file viewers)
-│   ├── case-studies/     # Detailed case studies page
+│   ├── api/              # Contact form API
 │   ├── certificates/     # Certificates gallery
 │   ├── components/       # Reusable components
 │   ├── contact/          # Contact page with form
 │   ├── projects/         # Projects showcase
-│   ├── skills/           # Skills and technologies
-│   └── view-project/     # PowerPoint dashboard viewer
 ├── public/
 │   ├── CERTIFICATES/     # Certificate PDFs
 │   ├── dashboards/       # Enhanced dashboard images
